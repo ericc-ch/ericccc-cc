@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+import FlexButton from "./FlexButton.astro";
+---
+
+<FlexButton id="theme-toggle" square>
+  <Icon id="moon" name="ph:moon" size={80} />
+  <Icon id="sun" name="ph:sun" size={80} />
+</FlexButton>
+
+<style>
+  #theme-toggle {
+    margin-inline: auto;
+    margin-block-start: 200px;
+  }
+
+  #moon {
+    display: none;
+  }
+
+  #sun {
+    display: block;
+  }
+
+  :global(:root.light) {
+    #moon {
+      display: block;
+    }
+
+    #sun {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document
+    .querySelector<HTMLButtonElement>("#theme-toggle")
+    ?.addEventListener("click", () => {
+      document.documentElement.classList.toggle("light");
+    });
+</script>

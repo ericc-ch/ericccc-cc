@@ -1,0 +1,97 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {}
+
+const { ...props } = Astro.props;
+
+const IMAGES = [
+  { src: "https://picsum.photos/400/200", gridArea: "a" },
+  { src: "https://picsum.photos/400/200", gridArea: "b" },
+  { src: "https://picsum.photos/200", gridArea: "c" },
+  { src: "https://picsum.photos/200", gridArea: "d" },
+  { src: "https://picsum.photos/200", gridArea: "e" },
+];
+---
+
+<div {...props} class:list={["container"]}>
+  <a href="/experiences" class="title-container">
+    <h2>Projects</h2>
+    <Icon width={64} height={64} name="ph:arrow-right" />
+  </a>
+
+  <div class="project-grid">
+    {
+      IMAGES.map(({ gridArea, src }) => (
+        <a href="/" style={{ gridArea }}>
+          <img src={src} alt="image" />
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+
+    text-decoration: none;
+    color: var(--color-mono-9);
+
+    transition: gap 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    h2 {
+      text-align: center;
+    }
+
+    &:hover {
+      gap: calc(var(--spacing-2) * 2);
+      color: var(--color-mono-10);
+    }
+  }
+
+  .container {
+    grid-area: proj;
+
+    display: grid;
+    gap: var(--spacing-3);
+
+    height: var(--height);
+    width: var(--width);
+
+    padding: var(--spacing-3);
+
+    background-color: var(--color-mono-2);
+  }
+
+  .project-grid {
+    display: grid;
+    gap: var(--spacing-1);
+
+    grid-template-areas:
+      "a a b c"
+      "a a d e";
+    grid-template-columns: repeat(4, 1fr);
+
+    > a {
+      block-size: 100%;
+
+      img {
+        block-size: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        transition: transform 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        &:hover {
+          filter: brightness(0.8);
+          transform: scale(0.95);
+          box-shadow: 0px 0px 0px 4px var(--color-mono-3);
+        }
+      }
+    }
+  }
+</style>

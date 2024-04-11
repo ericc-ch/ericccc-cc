@@ -1,0 +1,58 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import BlogPreview from "./BlogPreview.astro";
+
+interface Props extends HTMLAttributes<"a"> {}
+
+const { class: _, ...props } = Astro.props;
+---
+
+<div {...props} class:list={["container"]}>
+  <h2>Blogs</h2>
+
+  <div class="previews">
+    <BlogPreview
+      title="Bloggin fun!"
+      preview="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum ex laborum quidem laboriosam, tempore ab amet iste saepe aperiam voluptatibus eligendi. Dolor quam rem cumque, modi ducimus delectus! Fugit, quia."
+      date={new Date()}
+      href="/"
+    />
+    <BlogPreview
+      title="Bloggin fun!"
+      preview="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum ex laborum quidem laboriosam, tempore ab amet iste saepe aperiam voluptatibus eligendi. Dolor quam rem cumque, modi ducimus delectus! Fugit, quia."
+      date={new Date()}
+      href="/"
+    />
+    <BlogPreview
+      title="Bloggin fun!"
+      preview="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum ex laborum quidem laboriosam, tempore ab amet iste saepe aperiam voluptatibus eligendi. Dolor quam rem cumque, modi ducimus delectus! Fugit, quia."
+      date={new Date()}
+      href="/"
+    />
+  </div>
+</div>
+
+<style>
+  .container {
+    grid-area: blogs;
+
+    display: grid;
+    gap: var(--spacing-3);
+
+    height: var(--height);
+    width: var(--width);
+
+    padding: var(--spacing-3);
+
+    background-color: var(--color-mono-2);
+
+    h2 {
+      color: var(--color-mono-7);
+    }
+  }
+
+  .previews {
+    display: grid;
+    gap: var(--spacing-3);
+  }
+</style>

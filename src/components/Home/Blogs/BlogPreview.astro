@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  preview: string;
+  href: string;
+  date: string | Date | number;
+}
+
+const { title, date: propDate, href, preview } = Astro.props;
+
+const date = new Date(propDate);
+const formatter = new Intl.DateTimeFormat("en-ID", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<a href={href}>
+  <h3 class="h4">{title}</h3>
+  <p class="preview">{preview}</p>
+  <p class="date">{formatter.format(date)}</p>
+</a>
+
+<style>
+  a {
+    text-decoration: none;
+    display: grid;
+    gap: var(--spacing-1);
+
+    padding: var(--spacing-2);
+
+    background-color: var(--color-mono-3);
+
+    h3 {
+      color: var(--color-mono-9);
+    }
+
+    .preview {
+      color: var(--color-mono-6);
+    }
+
+    .date {
+      justify-self: end;
+      color: var(--color-mono-8);
+    }
+
+    &:hover {
+      background-color: var(--color-mono-2);
+      box-shadow: 0px 0px 0px 4px var(--color-mono-3);
+
+      h3 {
+        color: var(--color-mono-10);
+      }
+
+      .preview {
+        color: var(--color-mono-7);
+      }
+
+      .date {
+        color: var(--color-mono-9);
+      }
+    }
+  }
+</style>

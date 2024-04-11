@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  height?: string;
+  width?: string;
+  square?: boolean;
+}
+
+const { height, width, square, class: customClass, ...props } = Astro.props;
+---
+
+<a {...props} class:list={["flex-block", { square }, customClass]}>
+  <h2 class="h3">
+    <slot />
+  </h2>
+</a>
+
+<style define:vars={{ height, width }}>
+  .flex-block {
+    text-decoration: none;
+
+    display: grid;
+    place-content: center;
+
+    height: var(--height);
+    width: var(--width);
+
+    padding-inline: var(--spacing-3);
+    padding-block: var(--spacing-2);
+
+    background-color: var(--color-mono-2);
+    color: var(--color-mono-7);
+
+    &.square {
+      padding: var(--spacing-3);
+      aspect-ratio: 1 / 1;
+    }
+
+    &:hover {
+      background-color: var(--color-mono-1);
+      color: var(--color-mono-9);
+      box-shadow: 0px 0px 0px 4px var(--color-mono-2);
+    }
+  }
+</style>
