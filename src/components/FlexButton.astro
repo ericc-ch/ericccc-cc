@@ -11,9 +11,7 @@ const { height, width, square, class: customClass, ...props } = Astro.props;
 ---
 
 <button {...props} class:list={["flex-block", { square }, customClass]}>
-  <h2 class="h3">
-    <slot />
-  </h2>
+  <slot />
 </button>
 
 <style define:vars={{ height, width }}>
@@ -33,6 +31,7 @@ const { height, width, square, class: customClass, ...props } = Astro.props;
     color: var(--color-mono-7);
 
     border: none;
+    cursor: pointer;
 
     &:is(:focus, :focus-visible, :active) {
       outline: none;
