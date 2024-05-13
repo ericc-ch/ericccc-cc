@@ -1,0 +1,31 @@
+---
+import FlexLink from "../FlexLink.astro";
+---
+
+<FlexLink class="bookmark" href="/">
+  <span class="container">
+    <span>Bookmarks</span>
+    <span class="badge">1</span>
+  </span>
+</FlexLink>
+
+<style>
+  .bookmark {
+    grid-area: bmark;
+
+    .container {
+      display: flex;
+      gap: var(--spacing-3);
+      align-items: center;
+
+      .badge {
+        display: grid;
+        place-content: center;
+        width: 80px;
+        aspect-ratio: 1 / 1;
+        background-color: var(--color-mono-4);
+        color: var(--color-mono-6);
+      }
+    }
+  }
+</style>
