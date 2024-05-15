@@ -4,6 +4,8 @@ import { Icon } from "astro-icon/components";
 import Root from "../layouts/Root.astro";
 import FlexLink from "@/components/FlexLink.astro";
 import ToggleTheme from "@/components/ToggleTheme.astro";
+import { Image } from "astro:assets";
+import { LOGOS } from "@/images";
 
 const FIGMA_WIDTH = 1200;
 const GAP = 16;
@@ -34,7 +36,7 @@ const cssVars = {
       <Fullname />
 
       <FlexLink square href="/">
-        <Icon name="mdi:instagram" size={80} />
+        <Icon name="ph:planet" size={80} />
       </FlexLink>
 
       <FlexLink class="about" href="/">About</FlexLink>
@@ -44,6 +46,22 @@ const cssVars = {
       <Projects />
 
       <Bookmarks />
+
+      <FlexLink class="big" href="/">Sludge AI</FlexLink>
+
+      <FlexLink class="work1" href="/">
+        <Image src={LOGOS.protos} alt="protos labs" />
+      </FlexLink>
+
+      <FlexLink class="work2" href="/">
+        <Image src={LOGOS.skilledd} alt="protos labs" />
+      </FlexLink>
+
+      <FlexLink class="work3" href="/">
+        <Image src={LOGOS.xcidic} alt="protos labs" />
+      </FlexLink>
+
+      <FlexLink class="side" href="/">Sribu</FlexLink>
     </div>
   </main>
 </Root>
@@ -59,9 +77,9 @@ const cssVars = {
     grid-template-areas:
       "title title space about about about"
       "blogs proj  proj  proj  proj  proj "
-      "blogs big   big   big   big   schoo"
+      "blogs big   big   big   big   work1"
       "blogs big   big   big   big   side "
-      "bmark work1 work1 .     work2 side ";
+      "bmark work2 work2 work3 work3 side ";
     grid-template-columns:
       var(--column1Width) var(--column2Width) var(--column3Width)
       var(--column4Width) var(--column5Width) var(--column6Width);
@@ -69,5 +87,26 @@ const cssVars = {
 
   .about {
     grid-area: about;
+  }
+
+  .big {
+    grid-area: big;
+  }
+
+  .work1 {
+    grid-area: work1;
+  }
+
+  .work2 {
+    grid-area: work2;
+  }
+
+  .work3 {
+    grid-area: work3;
+  }
+
+  .side {
+    grid-area: side;
+    writing-mode: vertical-lr;
   }
 </style>
