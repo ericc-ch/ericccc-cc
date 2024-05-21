@@ -9,16 +9,16 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/check": "^0.6.0",
+    "@astrojs/check": "^0.7.0",
     "@fontsource-variable/urbanist": "^5.0.21",
-    "astro": "^4.8.2",
+    "astro": "^4.8.6",
     "astro-icon": "^1.1.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.66",
     "@iconify-json/ph": "^1.1.13",
-    "@iconify-json/simple-icons": "^1.1.101"
+    "@iconify-json/simple-icons": "^1.1.102"
   },
-  "packageManager": "pnpm@9.1.1"
+  "packageManager": "pnpm@9.1.2"
 }
